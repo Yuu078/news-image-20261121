@@ -15,6 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 HTML = os.path.join(HERE, "poster.html")
 PNG = os.path.join(HERE, "entry.png")
 PREVIEW = os.path.join(HERE, "entry-512.png")
+THUMB = os.path.join(HERE, "entry-300.png")
 CAP = 1_048_576
 
 
@@ -48,6 +49,7 @@ def main():
     img = Image.open(raw).crop((0, 0, 1024, 1024))
     img.save(PNG)
     img.resize((512, 512)).save(PREVIEW)
+    img.resize((300, 300)).save(THUMB)
     os.remove(raw)
     size = os.path.getsize(PNG)
     print(f"entry.png {img.size[0]}x{img.size[1]}, {size} bytes (cap {CAP})")

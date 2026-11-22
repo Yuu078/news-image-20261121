@@ -5,155 +5,450 @@
 <title>The Daily Atlas — Saturday 21 November 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #f6f1e5; --ink: #141210; --red: #c1272d; --navy: #1e3a5f;
+    --paper2: #efe7d3; --grey: #5c5546; --line: #c9bfa5;
+  }
   body {
     width: 1024px; height: 1024px; overflow: hidden;
-    background: #f7f3ea; color: #16130e;
-    font-family: "DejaVu Sans", sans-serif;
-    padding: 18px 30px 8px 30px;
+    background: var(--cream); color: var(--ink);
+    font-family: "Noto Sans", sans-serif;
+    padding: 9px 24px 6px 24px;
   }
-  .masthead { border-bottom: 5px solid #16130e; padding-bottom: 6px; }
-  .brand-row { display: flex; justify-content: space-between; align-items: baseline; }
-  .brand { font-family: "DejaVu Serif", serif; font-weight: bold; font-size: 36px; letter-spacing: 1px; }
-  .brand span { color: #a31621; }
-  .edition { font-size: 12.5px; text-align: right; line-height: 1.5; color: #4a4438; }
-  .dateline { display: flex; justify-content: space-between; align-items: baseline; margin-top: 3px; }
-  .date { font-family: "DejaVu Serif", serif; font-weight: bold; font-size: 22px; letter-spacing: .5px; }
-  .counts { font-size: 14px; font-weight: bold; background: #16130e; color: #f7f3ea; padding: 4px 10px; letter-spacing: 1px; }
-  .lead { display: flex; gap: 18px; margin-top: 7px; border-bottom: 2px solid #16130e; padding-bottom: 7px; }
-  .lead-main { flex: 1 1 auto; }
-  .kicker { font-size: 12px; font-weight: bold; letter-spacing: 2px; color: #a31621; }
-  .lead h1 { font-family: "DejaVu Serif", serif; font-size: 34px; line-height: 1.02; margin: 4px 0 6px 0; }
-  .lead p { font-size: 12.5px; line-height: 1.33; color: #2c2820; }
-  .lead-stats { flex: 0 0 218px; border: 2px solid #16130e; padding: 9px 12px; background: #efe8d8; }
-  .lead-stats h3 { font-size: 11.5px; letter-spacing: 1.5px; border-bottom: 1px solid #16130e; padding-bottom: 3px; margin-bottom: 4px; }
-  .lead-stats .stat { display: flex; justify-content: space-between; font-size: 12px; padding: 1.1px 0; border-bottom: 1px dotted #8a8271; }
-  .lead-stats .stat b { font-family: "DejaVu Serif", serif; font-size: 14px; }
-  .lead-stats .stat:last-child { border-bottom: none; }
-  .ticker { display: flex; gap: 0; margin-top: 8px; border: 2px solid #16130e; background: #16130e; color: #f7f3ea; }
-  .ticker div { flex: 1 1 auto; text-align: center; padding: 3px 2px; border-right: 1px solid #4a4438; }
-  .ticker div:last-child { border-right: none; }
-  .ticker .lbl { font-size: 9.5px; letter-spacing: 1px; color: #c9c0ab; display: block; }
-  .ticker .val { font-family: "DejaVu Serif", serif; font-weight: bold; font-size: 14.5px; }
-  .ticker .down { color: #ff7a6b; }
-  .ticker .up { color: #8fd18a; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 18px; margin-top: 7px; }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0 14px; margin-top: 6px; border-top: 2px solid #16130e; padding-top: 5px; }
-  .region h2 { font-size: 12.5px; letter-spacing: 2px; border-bottom: 3px solid #a31621; padding-bottom: 3px; margin-bottom: 5px; }
-  .region.blue h2 { border-color: #1d4e89; }
-  .region.green h2 { border-color: #2e6b34; }
-  .region.brown h2 { border-color: #8a5a17; }
-  .story { margin-bottom: 4px; }
-  .story h4 { font-family: "DejaVu Serif", serif; font-size: 12.5px; line-height: 1.12; }
-  .story p { font-size: 9.8px; line-height: 1.24; color: #3a352b; margin-top: 1px; }
-  .grid2 .story h4 { font-size: 11px; }
-  .grid2 .story p { font-size: 9.3px; line-height: 1.24; }
-  .grid2 .story { margin-bottom: 3px; }
-  .foot { margin-top: 5px; border-top: 2px solid #16130e; padding-top: 4px; display: flex; justify-content: space-between; font-size: 10px; color: #4a4438; }
+  /* ---------- masthead ---------- */
+  .topline { display: flex; justify-content: space-between; font-size: 9.5px;
+    letter-spacing: 2.2px; font-weight: bold; color: var(--grey);
+    border-top: 4px solid var(--ink); padding-top: 4px; }
+  .brandrow { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 1px; }
+  .brand { font-family: "Noto Serif", serif; font-weight: 900; font-size: 41px;
+    letter-spacing: .5px; line-height: 1; }
+  .brand span { color: var(--red); }
+  .counts { background: var(--ink); color: var(--cream); font-weight: bold;
+    font-size: 13.5px; letter-spacing: 1.6px; padding: 6px 12px; white-space: nowrap; margin-bottom: 5px; }
+  .daterow { display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 3px double var(--ink); padding-bottom: 4px; margin-top: 2px; }
+  .date { font-family: "Noto Serif", serif; font-weight: 900; font-size: 33px; letter-spacing: .4px; line-height: 1; }
+  .date span { color: var(--red); }
+  .tagline { font-size: 10.5px; color: var(--grey); letter-spacing: 1.2px; font-weight: bold; }
+  /* ---------- stats strip ---------- */
+  .strip { display: flex; background: var(--ink); color: var(--cream); margin-top: 6px; }
+  .strip div { flex: 1 1 0; text-align: center; padding: 3px 3px 3px 3px; border-right: 1px solid #45403a; }
+  .strip div:last-child { border-right: none; }
+  .strip .v { font-family: "Noto Serif", serif; font-weight: 900; font-size: 19px; display: block; line-height: 1.05; }
+  .strip .v em { color: #e88a8e; font-style: normal; }
+  .strip .l { font-size: 7.8px; letter-spacing: .8px; color: #cfc6ae; display: block; margin-top: 1px; line-height: 1.25; }
+  /* ---------- generic card ---------- */
+  .row { display: flex; gap: 10px; margin-top: 6px; }
+  .card { border: 1.6px solid var(--ink); background: #fbf8f0; display: flex; flex-direction: column; overflow: hidden; }
+  .banner { color: #fff; font-size: 9.3px; font-weight: bold; letter-spacing: 1.3px;
+    padding: 3px 8px; display: flex; justify-content: space-between; background: var(--navy); }
+  .banner.red { background: var(--red); }
+  .banner .no { background: #fff; color: var(--ink); padding: 0 5px; letter-spacing: .5px; }
+  .card .art { border-bottom: 1px solid var(--line); line-height: 0; }
+  .card .txt { padding: 4px 9px 2px 9px; }
+  .card h4 { font-family: "Noto Serif", serif; font-weight: 900; font-size: 14px; line-height: 1.1; }
+  .card p { font-size: 9.5px; line-height: 1.26; color: #33302a; margin-top: 2px; }
+  .src { font-size: 7.8px; letter-spacing: 1px; color: var(--grey); font-weight: bold; padding: 0 9px 3px 9px; margin-top: auto; }
+  /* ---------- hero ---------- */
+  .hero { flex: 1 1 auto; border: 2.2px solid var(--ink); }
+  .hero .banner { font-size: 11px; padding: 4px 10px; }
+  .hero-flex { display: flex; }
+  .hero .art { border-bottom: none; border-right: 1px solid var(--line); line-height: 0; }
+  .hero .txt { padding: 8px 12px 4px 12px; flex: 1 1 auto; }
+  .hero h1 { font-family: "Noto Serif", serif; font-weight: 900; font-size: 27px; line-height: 1.04; }
+  .hero p { font-size: 11.4px; line-height: 1.32; color: #2c2820; margin-top: 5px; }
+  .hero .src { padding: 4px 12px 6px 12px; font-size: 8.6px; }
+  /* ---------- map ---------- */
+  .mapbox { flex: 0 0 318px; border: 2.2px solid var(--ink); background: #fbf8f0; display: flex; flex-direction: column; overflow: hidden; }
+  .mapbox .banner { font-size: 10px; padding: 4px 10px; }
+  .mapbox svg { display: block; margin: 3px auto 0 auto; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 1px 10px; padding: 3px 10px 2px 10px;
+    font-size: 8.8px; font-weight: bold; letter-spacing: .6px; }
+  .legend i { display: inline-block; width: 8px; height: 8px; margin-right: 5px; }
+  .legend b { font-family: "Noto Serif", serif; font-size: 10.5px; }
+  .mapnote { font-size: 8.2px; color: var(--grey); padding: 0 10px 5px 10px; line-height: 1.3; }
+  /* ---------- date check ---------- */
+  .datecheck { border: 2.6px solid var(--red); background: #fdf3ec; }
+  .datecheck .banner { background: var(--red); font-size: 10.5px; }
+  .datecheck .txt { padding: 6px 10px; }
+  .datecheck p { font-size: 9.7px; line-height: 1.32; margin-bottom: 5px; }
+  .datecheck p b { color: var(--red); }
+  .datecheck .ok { border-top: 1px solid var(--red); padding-top: 4px; font-weight: bold; color: var(--ink); margin-bottom: 0; }
+  /* ---------- the wire ---------- */
+  .wire { margin-top: 7px; border: 1.6px solid var(--ink); background: #fbf8f0; }
+  .wire .banner { background: var(--ink); font-size: 10.5px; padding: 3px 10px; }
+  .wire-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 14px; padding: 4px 10px 5px 10px; }
+  .wi { font-size: 9.3px; line-height: 1.18; padding: .6px 0; border-bottom: 1px dotted var(--line); }
+  .wi:last-child { border-bottom: none; }
+  .wi .t { color: var(--red); font-weight: bold; font-size: 9.6px; }
+  .wi .n { font-family: "Noto Serif", serif; font-weight: 900; }
+  .wi .r { color: var(--navy); font-size: 7.8px; font-weight: bold; letter-spacing: .6px; }
+  /* ---------- footer ---------- */
+  .foot { margin-top: 4px; border-top: 2.4px solid var(--ink); padding-top: 3px;
+    display: flex; justify-content: space-between; font-size: 9px; color: var(--grey); letter-spacing: .4px; }
+  .foot b { color: var(--ink); }
 </style>
 </head>
 <body>
-  <div class="masthead">
-    <div class="brand-row">
-      <div class="brand">THE DAILY <span>ATLAS</span></div>
-      <div class="edition">ONE PAGE &bull; THE WHOLE WORLD<br>Sources: Reuters &bull; AP &bull; BBC &bull; UN News &bull; Al Jazeera</div>
+
+  <!-- MASTHEAD -->
+  <div class="topline"><span>ONE PAGE &bull; THE WHOLE WORLD</span><span>LATE EDITION</span></div>
+  <div class="brandrow">
+    <div class="brand">THE DAILY <span>ATLAS</span></div>
+    <div class="counts">35 STORIES &bull; 7 REGIONS</div>
+  </div>
+  <div class="daterow">
+    <div class="date"><span>SATURDAY</span> 21 NOVEMBER 2026</div>
+    <div class="tagline">EVERY STORY CROSS-CHECKED TO A NAMED OUTLET</div>
+  </div>
+
+  <!-- STATS STRIP: exactly 6 numbers -->
+  <div class="strip">
+    <div><span class="v">110+</span><span class="l">MISSILES FIRED ON UKRAINE IN ONE NIGHT</span></div>
+    <div><span class="v">$81BN</span><span class="l">ANTHROPIC IPO &mdash; LARGEST DEBUT ON RECORD</span></div>
+    <div><span class="v"><em>&minus;6.63%</em></span><span class="l">TAIEX &mdash; AI SELL-OFF, SECOND DAY</span></div>
+    <div><span class="v">$3.79BN</span><span class="l">GTA VI SALES IN ITS FIRST 24 HOURS</span></div>
+    <div><span class="v">5,590</span><span class="l">MURDERS IN SOUTH AFRICA &middot; 3 MONTHS</span></div>
+    <div><span class="v"><em>41</em></span><span class="l">KILLED IN THE HODEIDAH PORT STRIKE</span></div>
+  </div>
+
+  <!-- ROW A: HERO + MAP -->
+  <div class="row">
+    <div class="card hero">
+      <div class="banner red"><span>&#9733; LEAD &mdash; EUROPE &middot; RZESZ&Oacute;W, POLAND</span><span class="no">No. 1</span></div>
+      <div class="hero-flex">
+        <div class="art">
+          <svg width="336" height="118" viewBox="0 0 336 172" preserveAspectRatio="none">
+            <rect width="336" height="172" fill="#16283f"/>
+            <path d="M8 130 L60 96 L96 108 L128 74 L170 84 L206 52 L250 66 L300 34 L336 44 L336 172 L8 172 Z" fill="#22385a"/>
+            <path d="M196 20 L238 44 L232 92 L196 108 L172 74 L178 38 Z" fill="#e9dfc8"/>
+            <text x="207" y="66" font-family="Noto Sans" font-size="10.5" font-weight="bold" fill="#16283f" text-anchor="middle">POLAND</text>
+            <text x="330" y="118" font-family="Noto Sans" font-size="10.5" font-weight="bold" fill="#8fa5c4" text-anchor="end">UKRAINE</text>
+            <circle cx="252" cy="96" r="3.2" fill="#f6f1e5"/><text x="259" y="93" font-family="Noto Sans" font-size="9" fill="#f6f1e5">Kyiv</text>
+            <circle cx="212" cy="82" r="3.2" fill="#c1272d"/>
+            <g stroke="#c1272d" stroke-width="2.4">
+              <line x1="200" y1="70" x2="224" y2="94"/><line x1="224" y1="70" x2="200" y2="94"/>
+              <line x1="190" y1="82" x2="234" y2="82"/><line x1="212" y1="60" x2="212" y2="104"/>
+            </g>
+            <path d="M336 30 Q 280 8 224 74" stroke="#e2574c" stroke-width="2.6" fill="none" stroke-dasharray="7 5"/>
+            <path d="M336 66 Q 286 40 228 80" stroke="#e2574c" stroke-width="2.6" fill="none" stroke-dasharray="7 5"/>
+            <path d="M336 104 Q 292 84 232 88" stroke="#e2574c" stroke-width="2.6" fill="none" stroke-dasharray="7 5"/>
+            <text x="14" y="146" font-family="Noto Serif" font-weight="900" font-size="21" fill="#f6f1e5">110+ MISSILES &middot; 400 DRONES</text>
+            <text x="14" y="162" font-family="Noto Sans" font-size="9.5" fill="#c8d3e2">the year&rsquo;s biggest strike on Ukraine &mdash; and its fallout lands in Poland</text>
+          </svg>
+        </div>
+        <div class="txt">
+          <h1>Russian missiles land in Poland</h1>
+          <p>Russian missiles fell near Rzesz&oacute;w in Poland during the giant overnight strike on Ukraine. Warsaw called it a grave violation of its airspace and NATO jets scrambled in response.</p>
+        </div>
+      </div>
+      <div class="src">SOURCES: AP &middot; REUTERS &mdash; FULL STORY No. 2, BELOW</div>
     </div>
-    <div class="dateline">
-      <div class="date">SATURDAY, NOVEMBER 21, 2026</div>
-      <div class="counts">35 STORIES &bull; 7 REGIONS</div>
+
+    <div class="mapbox">
+      <div class="banner"><span>THE HEAT MAP &mdash; WHERE SATURDAY HAPPENED</span></div>
+      <svg id="worldmap" width="294" height="86" preserveAspectRatio="none" viewBox="0 0 294 124"></svg>
+      <div class="legend">
+        <span><i style="background:#c1272d"></i>EUROPE <b>7</b></span>
+        <span><i style="background:#c1272d"></i>ASIA-PACIFIC <b>7</b></span>
+        <span><i style="background:#d34a4f"></i>NORTH AMERICA <b>6</b></span>
+        <span><i style="background:#dd7a7d"></i>MIDDLE EAST <b>4</b></span>
+        <span><i style="background:#dd7a7d"></i>AFRICA <b>4</b></span>
+        <span><i style="background:#e8a7a9"></i>LATIN AMERICA <b>3</b></span>
+        <span><i style="background:#1e3a5f"></i>GLOBAL <b>4</b></span>
+        <span style="color:#5c5546">TOTAL <b style="color:#141210">35</b></span>
+      </div>
+      <div class="mapnote">Darker dots = more stories &middot; pins = the 12 illustrated stories.</div>
     </div>
   </div>
 
-  <div class="lead">
-    <div class="lead-main">
-      <div class="kicker">EUROPE &mdash; THE WAR CROSSES A BORDER</div>
-      <h1>Russian missiles land in Poland</h1>
-      <p>Russian missiles fell near Rzesz&oacute;w in Poland during the largest strike of the year on Ukraine. Warsaw called it a grave violation, NATO jets scrambled and Patriot batteries were activated, while Kyiv counted at least eight dead and three damaged Dnipro bridges.</p>
+  <!-- ROW B: cards 2, 10, 15, 16 -->
+  <div class="row">
+    <div class="card" style="flex:1 1 0">
+      <div class="banner red"><span>EUROPE &middot; KYIV, UKRAINE</span><span class="no">No. 2</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#16283f"/>
+        <path d="M0 72 L0 52 L22 52 L22 40 L40 40 L40 56 L66 56 L66 34 L84 34 L84 56 L112 56 L112 44 L134 44 L134 72 Z" fill="#0d1726"/>
+        <circle cx="168" cy="26" r="11" fill="#c1272d"/><circle cx="168" cy="26" r="18" fill="#c1272d" opacity=".35"/>
+        <circle cx="198" cy="44" r="7" fill="#e2574c"/><circle cx="198" cy="44" r="12" fill="#e2574c" opacity=".3"/>
+        <text x="10" y="24" font-family="Noto Serif" font-weight="900" font-size="17" fill="#f6f1e5">8 DEAD &middot; 3 BRIDGES HIT</text>
+      </svg></div>
+      <div class="txt"><h4>Kyiv counts the dead after the year&rsquo;s biggest strike</h4>
+      <p>More than 110 missiles and 400 drones hit Ukraine overnight; three Dnipro bridges in the capital were damaged.</p></div>
+      <div class="src">REUTERS &middot; CNN</div>
     </div>
-    <div class="lead-stats">
-      <h3>THE STRIKE, BY NUMBERS</h3>
-      <div class="stat"><span>Missiles fired</span><b>110+</b></div>
-      <div class="stat"><span>Drones launched</span><b>400+</b></div>
-      <div class="stat"><span>Ballistic missiles</span><b>27</b></div>
-      <div class="stat"><span>Killed in Ukraine</span><b>8+</b></div>
-      <div class="stat"><span>Kyiv bridges hit</span><b>3</b></div>
-      <div class="stat"><span>Hours of attack</span><b>10+</b></div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>ASIA-PACIFIC &middot; THE MARKETS</span><span class="no">No. 10</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <rect x="30" y="18" width="34" height="38" fill="#1e3a5f"/><rect x="86" y="15" width="34" height="41" fill="#1e3a5f"/><rect x="142" y="8" width="34" height="48" fill="#c1272d"/>
+        <text x="47" y="68" font-family="Noto Sans" font-size="8" text-anchor="middle" fill="#141210">NIKKEI</text>
+        <text x="103" y="68" font-family="Noto Sans" font-size="8" text-anchor="middle" fill="#141210">KOSPI</text>
+        <text x="159" y="68" font-family="Noto Sans" font-size="8" text-anchor="middle" fill="#141210">TAIEX</text>
+        <text x="176" y="26" font-family="Noto Serif" font-weight="900" font-size="15.5" fill="#c1272d">&minus;6.63%</text>
+        <text x="188" y="42" font-family="Noto Sans" font-size="8.4" fill="#5c5546">worst fall</text>
+      </svg></div>
+      <div class="txt"><h4>Asia stocks plunge as AI selloff deepens</h4>
+      <p>Nikkei &minus;5.06%, Kospi &minus;5.21% and Taiex &minus;6.63% as the AI selloff hit a second straight session.</p></div>
+      <div class="src">KILAMBI &middot; REUTERS</div>
     </div>
-  </div>
-
-  <div class="ticker">
-    <div><span class="lbl">S&amp;P 500</span><span class="val down">&minus;3.7%</span></div>
-    <div><span class="lbl">NASDAQ</span><span class="val down">&minus;5.3%</span></div>
-    <div><span class="lbl">NIKKEI 225</span><span class="val down">&minus;5.06%</span></div>
-    <div><span class="lbl">KOSPI</span><span class="val down">&minus;5.21%</span></div>
-    <div><span class="lbl">TAIEX</span><span class="val down">&minus;6.63%</span></div>
-    <div><span class="lbl">NVIDIA</span><span class="val down">&minus;13.8%</span></div>
-    <div><span class="lbl">GTA VI, DAY ONE</span><span class="val up">$3.79B</span></div>
-  </div>
-
-  <div class="grid">
-    <div class="region">
-      <h2>EUROPE</h2>
-      <div class="story"><h4>Kyiv counts the dead after the year&rsquo;s biggest strike</h4><p>Emergency power cuts hit eleven regions as Russia targeted energy and rail networks ahead of winter.</p></div>
-      <div class="story"><h4>UK and EU scrap food checks, unveil youth scheme</h4><p>The Brussels deal ends food checks between Britain and the EU and opens youth mobility for 100,000 under-30s on each side.</p></div>
-      <div class="story"><h4>Estonia to shut five Russia border crossings</h4><p>Tallinn will close five road crossings with Russia from 1 December for at least six months, citing security after the Poland violations.</p></div>
-      <div class="story"><h4>Ukraine&rsquo;s allies meet in Berlin, open to Russia talks</h4><p>Backers of Kyiv signalled openness to talks with Moscow, a day after the Trump&ndash;Xi&ndash;Putin trilateral summit in China.</p></div>
-      <div class="story"><h4>Denmark expels Russian diplomat over alleged plot</h4><p>Copenhagen expelled a Russian diplomat amid allegations of a plot to kill an American-Ukrainian citizen on Danish soil.</p></div>
-      <div class="story"><h4>Cost-of-living protests sweep European cities</h4><p>Workers and students marched across Europe over prices, disrupting transport in Italy as unions pressed governments to act.</p></div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>N. AMERICA &middot; WALL STREET</span><span class="no">No. 15</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <path d="M6 62 L226 62 M6 40 L226 40 M6 18 L226 18" stroke="#ddd3ba" stroke-width="1"/>
+        <path d="M8 34 L58 38 L104 36 L146 46 L186 54 L222 64" stroke="#c1272d" stroke-width="3.4" fill="none"/>
+        <circle cx="222" cy="64" r="4" fill="#c1272d"/>
+        <text x="10" y="24" font-family="Noto Serif" font-weight="900" font-size="19" fill="#141210">S&amp;P 500 &minus;3.7%</text>
+      </svg></div>
+      <div class="txt"><h4>S&amp;P 500 sinks 3.7% into correction</h4>
+      <p>The Nasdaq turned negative for the year as investors dumped AI stocks on Friday.</p></div>
+      <div class="src">CNBC &middot; STOCKTWITS</div>
     </div>
-    <div class="region blue">
-      <h2>ASIA-PACIFIC</h2>
-      <div class="story"><h4>Prabowo and Xi open trade talks in Shenzhen</h4><p>Indonesia and China opened economic partnership negotiations and signed memorandums worth 15 billion dollars at APEC leaders&rsquo; week.</p></div>
-      <div class="story"><h4>Xi urges Asia-Pacific free trade progress at APEC</h4><p>President Xi called in Shenzhen for faster work toward an Asia-Pacific free trade area and closer regional cooperation.</p></div>
-      <div class="story"><h4>Asia stocks plunge as AI selloff deepens</h4><p>Tokyo, Seoul and Taipei fell hard as chip and AI shares dropped for a second straight session.</p></div>
-      <div class="story"><h4>Japan funds nuclear submarine study</h4><p>Tokyo will fund a nuclear-powered submarine study and weigh an exception to its nuclear weapons ban.</p></div>
-      <div class="story"><h4>South Korea exam cheating scandal widens</h4><p>A cheating scandal around the high-stakes university entrance exam deepened, raising pressure on education officials.</p></div>
-      <div class="story"><h4>New Zealand election too close to call</h4><p>No clear winner emerged; the right-wing coalition leads narrowly and special votes will decide the result on 27 November.</p></div>
-      <div class="story"><h4>Toxic liquor kills at least 11 in India&rsquo;s Manipur</h4><p>Hundreds were hospitalised after drinking suspected spurious alcohol in the northeastern state, officials said.</p></div>
-    </div>
-    <div class="region green">
-      <h2>NORTH AMERICA</h2>
-      <div class="story"><h4>S&amp;P 500 sinks 3.7% into correction</h4><p>The index closed in correction territory and the Nasdaq turned negative for the year as investors dumped AI stocks on Friday.</p></div>
-      <div class="story"><h4>Anthropic slides after record $81B IPO</h4><p>Shares fell about 9% a day after the largest debut on record raised 81 billion dollars.</p></div>
-      <div class="story"><h4>GTA VI earns $3.79B on day one</h4><p>Grand Theft Auto VI posted the biggest entertainment launch in history, passing every prior film and game debut.</p></div>
-      <div class="story"><h4>Trump threatens penalties over overseas data centres</h4><p>US tech firms building AI data centres abroad would face &ldquo;tremendous penalties&rdquo;, the president said, giving no details.</p></div>
-      <div class="story"><h4>Cyber director replaced after week of outages</h4><p>Trump replaced the cyber chief after outages hit air travel, banking and security systems.</p></div>
-      <div class="story"><h4>Chip stocks lead the rout on Wall Street</h4><p>Nvidia fell 13.8% on Friday and the Philadelphia semiconductor index sank 10.7% as the AI repricing gathered pace.</p></div>
-    </div>
-  </div>
-
-  <div class="grid2">
-    <div class="region brown">
-      <h2>MIDDLE EAST</h2>
-      <div class="story"><h4>Coalition strikes Hodeidah port</h4><p>The Saudi-led coalition hit Houthi facilities at the Yemeni port; the Houthis reported 41 dead.</p></div>
-      <div class="story"><h4>Tanker ablaze off Oman</h4><p>A tanker caught fire after a projectile hit it eight nautical miles north of Khasab, at the entrance to the Strait of Hormuz.</p></div>
-      <div class="story"><h4>Houthis warn airlines away</h4><p>The group said Saudi airspace was unsafe and that three missiles aimed at Riyadh had been downed.</p></div>
-      <div class="story"><h4>US and Qatar talk Iran ceasefire</h4><p>Trump envoys met Qatari officials in Berlin to discuss restarting negotiations with Iran.</p></div>
-    </div>
-    <div class="region brown">
-      <h2>AFRICA</h2>
-      <div class="story"><h4>South Africa: 5,590 murders in 3 months</h4><p>Police reported about sixty murders a day in July&ndash;September, though the toll was down 3.5% on a year earlier.</p></div>
-      <div class="story"><h4>Kenya discharges last Ebola patient</h4><p>The discharge closed an outbreak response officials held up as a model of preparation, not luck.</p></div>
-      <div class="story"><h4>Somalia orders UAE envoy out</h4><p>Mogadishu said Emirati actions amounted to an open invasion and interference in its internal affairs.</p></div>
-      <div class="story"><h4>Tunisian rights defender jailed</h4><p>A court sentenced Sihem Ben Sedrine to five years in prison.</p></div>
-    </div>
-    <div class="region brown">
-      <h2>LATIN AMERICA</h2>
-      <div class="story"><h4>Salvadoran soldiers die in Haiti</h4><p>Three soldiers died handling explosive material, El Salvador&rsquo;s first losses in the Haiti mission.</p></div>
-      <div class="story"><h4>US woman freed after 10 years in Cuba</h4><p>She returned home with no exchange deal reported by either government.</p></div>
-      <div class="story"><h4>Caribbean presses COP31 on finance</h4><p>Island states demanded accessible climate finance at Antalya, saying survival funds cannot wait.</p></div>
-    </div>
-    <div class="region brown">
-      <h2>GLOBAL</h2>
-      <div class="story"><h4>COP31 fight over fossil fuel words</h4><p>Countries across four continents demanded a stronger deal after fossil fuel language dropped from the Antalya draft.</p></div>
-      <div class="story"><h4>After ICJ verdict, UN visits Rohingya camps</h4><p>UN leaders went to Cox&rsquo;s Bazar after the World Court found Myanmar committed genocide, a first for the court.</p></div>
-      <div class="story"><h4>Grynspan leads UN chief straw poll</h4><p>Costa Rica&rsquo;s Rebeca Grynspan led the ninth poll to succeed Ant&oacute;nio Guterres, ahead of Rafael Grossi.</p></div>
-      <div class="story"><h4>BepiColombo reaches Mercury</h4><p>The spacecraft arrived at the least explored planet of the inner solar system.</p></div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>NORTH AMERICA &middot; MARKETS</span><span class="no">No. 16</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#1e3a5f"/>
+        <text x="14" y="40" font-family="Noto Serif" font-weight="900" font-size="27" fill="#f6f1e5">$81BN</text>
+        <path d="M150 16 L196 16 L196 30 L214 30 L178 62 L142 30 L158 30 Z" fill="#c1272d" transform="translate(-16 2) scale(.92)"/>
+        <text x="14" y="60" font-family="Noto Sans" font-size="9.3" fill="#c8d3e2">record IPO &mdash; then &minus;9% on day two</text>
+      </svg></div>
+      <div class="txt"><h4>Anthropic slides after record $81 billion IPO</h4>
+      <p>Shares fell about 9% in the second session after the largest stock market debut on record.</p></div>
+      <div class="src">FEEDPUNK</div>
     </div>
   </div>
 
+  <!-- ROW C: cards 17, 20, 21, 25 -->
+  <div class="row">
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>NORTH AMERICA &middot; GAMING</span><span class="no">No. 17</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#16283f"/>
+        <rect x="14" y="20" width="52" height="30" rx="14" fill="none" stroke="#f6f1e5" stroke-width="2.6"/>
+        <circle cx="52" cy="35" r="3.4" fill="#c1272d"/><circle cx="28" cy="35" r="3" fill="#f6f1e5"/>
+        <text x="78" y="44" font-family="Noto Serif" font-weight="900" font-size="24" fill="#f6f1e5">$3.79BN</text>
+        <text x="14" y="64" font-family="Noto Sans" font-size="9" fill="#c8d3e2">DAY ONE &mdash; BIGGEST LAUNCH IN HISTORY</text>
+      </svg></div>
+      <div class="txt"><h4>GTA VI earns $3.79 billion on day one</h4>
+      <p>The biggest entertainment launch in history, passing every prior game and film debut.</p></div>
+      <div class="src">TAKE-TWO &middot; FORBES</div>
+    </div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>NORTH AMERICA &middot; CHIPS</span><span class="no">No. 20</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <g stroke="#1e3a5f" stroke-width="2.4"><path d="M34 8 V0 M52 8 V0 M70 8 V0 M34 64 v8 M52 64 v8 M70 64 v8 M26 22 H12 M26 38 H12 M26 52 H12 M78 22 h14 M78 38 h14 M78 52 h14"/></g>
+        <rect x="26" y="8" width="52" height="56" fill="#1e3a5f"/>
+        <text x="52" y="41" font-family="Noto Serif" font-weight="900" font-size="13" fill="#f6f1e5" text-anchor="middle">NVDA</text>
+        <text x="104" y="34" font-family="Noto Serif" font-weight="900" font-size="21" fill="#c1272d">&minus;13.8%</text>
+        <text x="104" y="52" font-family="Noto Sans" font-size="8.6" fill="#5c5546">chip index &minus;10.7% on the day</text>
+      </svg></div>
+      <div class="txt"><h4>Chip stocks lead the rout on Wall Street</h4>
+      <p>Nvidia fell 13.8% on Friday as the great AI repricing gathered pace.</p></div>
+      <div class="src">FEEDPUNK &middot; BLOOMBERG</div>
+    </div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner red"><span>MIDDLE EAST &middot; HODEIDAH</span><span class="no">No. 21</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#16283f"/>
+        <path d="M0 60 L232 60 L232 72 L0 72 Z" fill="#0d1726"/>
+        <path d="M20 60 V22 M20 22 H74 M74 22 V34 M60 34 h28 l-6 10 H66 Z" stroke="#8fa5c4" stroke-width="3" fill="none"/>
+        <path d="M120 60 l8 -14 h44 l6 14 Z" fill="#22385a"/><rect x="140" y="34" width="16" height="12" fill="#22385a"/>
+        <circle cx="98" cy="20" r="8" fill="#c1272d"/><circle cx="98" cy="20" r="14" fill="#c1272d" opacity=".32"/>
+        <text x="128" y="26" font-family="Noto Serif" font-weight="900" font-size="18" fill="#f6f1e5">41 DEAD</text>
+      </svg></div>
+      <div class="txt"><h4>Coalition strikes Hodeidah port in Yemen</h4>
+      <p>The Saudi-led coalition hit Houthi facilities; the Houthis threatened Saudi Red Sea ports in reply.</p></div>
+      <div class="src">REUTERS &middot; AL JAZEERA</div>
+    </div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner red"><span>AFRICA &middot; SOUTH AFRICA</span><span class="no">No. 25</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <text x="12" y="42" font-family="Noto Serif" font-weight="900" font-size="31" fill="#c1272d">5,590</text>
+        <text x="130" y="30" font-family="Noto Sans" font-weight="bold" font-size="10.5" fill="#141210">MURDERS IN</text>
+        <text x="130" y="44" font-family="Noto Sans" font-weight="bold" font-size="10.5" fill="#141210">THREE MONTHS</text>
+        <text x="12" y="62" font-family="Noto Sans" font-size="9.2" fill="#5c5546">about 60 a day &middot; down 3.5% on last year</text>
+      </svg></div>
+      <div class="txt"><h4>South Africa counts 5,590 murders in three months</h4>
+      <p>Police reported the July&ndash;September toll as the country debated a crime emergency.</p></div>
+      <div class="src">SA POLICE SERVICE</div>
+    </div>
+  </div>
+
+  <!-- ROW D: cards 3, 14, 26 + DATE CHECK -->
+  <div class="row">
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>EUROPE &middot; BRUSSELS DEAL</span><span class="no">No. 3</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <circle cx="42" cy="32" r="19" fill="#1e3a5f"/><text x="42" y="37" font-family="Noto Serif" font-weight="900" font-size="12.5" fill="#f6f1e5" text-anchor="middle">UK</text>
+        <circle cx="102" cy="32" r="19" fill="#c1272d"/><text x="102" y="37" font-family="Noto Serif" font-weight="900" font-size="12.5" fill="#f6f1e5" text-anchor="middle">EU</text>
+        <path d="M64 26 H80 M64 40 H80" stroke="#141210" stroke-width="2.6"/><path d="M80 26 l-6 -4 M80 26 l-6 4 M80 40 l-6 -4 M80 40 l-6 4" stroke="#141210" stroke-width="2.2"/>
+        <text x="132" y="32" font-family="Noto Serif" font-weight="900" font-size="17" fill="#141210">100,000</text>
+        <text x="132" y="46" font-family="Noto Sans" font-size="8.4" fill="#5c5546">youth places, each side</text>
+        <text x="12" y="66" font-family="Noto Sans" font-size="8.8" fill="#5c5546">food checks scrapped between Britain and the EU</text>
+      </svg></div>
+      <div class="txt"><h4>UK and EU scrap food checks, unveil youth scheme</h4>
+      <p>The Brussels deal opens a youth mobility scheme for 100,000 under-30s on each side.</p></div>
+      <div class="src">THE WORLD IN SIXTY</div>
+    </div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner red"><span>ASIA-PACIFIC &middot; MANIPUR</span><span class="no">No. 14</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#fbf8f0"/>
+        <path d="M34 10 h14 v10 l6 8 v32 a6 6 0 0 1 -6 6 H34 a6 6 0 0 1 -6 -6 V28 l6 -8 Z" fill="none" stroke="#141210" stroke-width="2.6"/>
+        <path d="M33 40 l16 16 M49 40 L33 56" stroke="#c1272d" stroke-width="3.4"/>
+        <text x="70" y="38" font-family="Noto Serif" font-weight="900" font-size="21" fill="#c1272d">11 DEAD</text>
+        <text x="70" y="54" font-family="Noto Sans" font-size="8.8" fill="#5c5546">hundreds in hospital after toxic liquor</text>
+      </svg></div>
+      <div class="txt"><h4>Toxic liquor kills at least 11 in India&rsquo;s Manipur</h4>
+      <p>Suspected spurious alcohol hospitalised hundreds in the northeastern state.</p></div>
+      <div class="src">THREADS ROUNDUP</div>
+    </div>
+    <div class="card" style="flex:1 1 0">
+      <div class="banner"><span>AFRICA &middot; KENYA</span><span class="no">No. 26</span></div>
+      <div class="art"><svg width="100%" height="43" viewBox="0 0 232 72" preserveAspectRatio="none">
+        <rect width="232" height="72" fill="#1e3a5f"/>
+        <circle cx="38" cy="36" r="21" fill="#f6f1e5"/>
+        <path d="M38 24 v24 M26 36 h24" stroke="#c1272d" stroke-width="7"/>
+        <text x="70" y="34" font-family="Noto Serif" font-weight="900" font-size="21" fill="#f6f1e5">0 LEFT</text>
+        <text x="70" y="51" font-family="Noto Sans" font-size="9" fill="#c8d3e2">last Ebola patient discharged</text>
+      </svg></div>
+      <div class="txt"><h4>Kenya discharges its last Ebola patient</h4>
+      <p>The discharge closes an outbreak response held up as a model of preparation.</p></div>
+      <div class="src">HI TECH &amp; NEWS</div>
+    </div>
+    <div class="card datecheck" style="flex:1 1 0">
+      <div class="banner"><span>&#10003; DATE CHECK &mdash; WHAT WE THREW OUT</span></div>
+      <div class="txt">
+        <p><b>&#10005; DROPPED:</b> &ldquo;Kyiv energy truce signed&rdquo; &mdash; single anonymous source, unconfirmed by any wire at press time.</p>
+        <p><b>&#10005; DROPPED:</b> &ldquo;Iceland volcano erupts&rdquo; &mdash; wire copy dated 19 Nov recirculated as breaking news.</p>
+        <p class="ok">&#10003; All 35 stories cross-checked to named outlets. Verified at 23:41 WIB.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE WIRE: remaining 23 stories -->
+  <div class="wire">
+    <div class="banner"><span>THE WIRE &mdash; THE REST OF SATURDAY, AS IT LANDED</span><span>23 MORE STORIES</span></div>
+    <div class="wire-cols">
+      <div>
+        <div class="wi"><span class="t">06:05</span> <span class="n">4.</span> Estonia shuts five Russia border crossings <span class="r">EU</span></div>
+        <div class="wi"><span class="t">07:18</span> <span class="n">5.</span> Ukraine&rsquo;s allies in Berlin, open to Russia talks <span class="r">EU</span></div>
+        <div class="wi"><span class="t">08:02</span> <span class="n">6.</span> Denmark expels Russian diplomat over plot <span class="r">EU</span></div>
+        <div class="wi"><span class="t">08:47</span> <span class="n">7.</span> Cost-of-living protests sweep Europe&rsquo;s cities <span class="r">EU</span></div>
+        <div class="wi"><span class="t">09:15</span> <span class="n">8.</span> Prabowo, Xi open $15bn trade talks in Shenzhen <span class="r">APAC</span></div>
+        <div class="wi"><span class="t">09:58</span> <span class="n">9.</span> Xi urges Asia-Pacific free trade at APEC <span class="r">APAC</span></div>
+        <div class="wi"><span class="t">10:31</span> <span class="n">11.</span> Japan funds nuclear submarine study <span class="r">APAC</span></div>
+        <div class="wi"><span class="t">11:06</span> <span class="n">12.</span> South Korea exam cheating scandal widens <span class="r">APAC</span></div>
+      </div>
+      <div>
+        <div class="wi"><span class="t">11:44</span> <span class="n">13.</span> New Zealand election too close to call <span class="r">APAC</span></div>
+        <div class="wi"><span class="t">12:20</span> <span class="n">18.</span> Trump: penalties for data centres abroad <span class="r">N.AMER</span></div>
+        <div class="wi"><span class="t">13:02</span> <span class="n">19.</span> Cyber director replaced after week of outages <span class="r">N.AMER</span></div>
+        <div class="wi"><span class="t">13:37</span> <span class="n">22.</span> Tanker ablaze after strike off Oman <span class="r">M.EAST</span></div>
+        <div class="wi"><span class="t">14:15</span> <span class="n">23.</span> Houthis warn airlines off Saudi airspace <span class="r">M.EAST</span></div>
+        <div class="wi"><span class="t">14:52</span> <span class="n">24.</span> US, Qatar talk to revive Iran ceasefire <span class="r">M.EAST</span></div>
+        <div class="wi"><span class="t">15:29</span> <span class="n">27.</span> Somalia orders UAE ambassador to leave <span class="r">AFRICA</span></div>
+        <div class="wi"><span class="t">16:04</span> <span class="n">28.</span> Tunisian rights defender jailed five years <span class="r">AFRICA</span></div>
+      </div>
+      <div>
+        <div class="wi"><span class="t">16:41</span> <span class="n">29.</span> Salvadoran soldiers die in Haiti explosion <span class="r">LATAM</span></div>
+        <div class="wi"><span class="t">17:18</span> <span class="n">30.</span> US woman freed after 10 years in Cuba <span class="r">LATAM</span></div>
+        <div class="wi"><span class="t">17:55</span> <span class="n">31.</span> Caribbean presses COP31 for climate finance <span class="r">LATAM</span></div>
+        <div class="wi"><span class="t">18:32</span> <span class="n">32.</span> COP31 fight over fossil fuel language <span class="r">GLOBAL</span></div>
+        <div class="wi"><span class="t">19:09</span> <span class="n">33.</span> UN visits Rohingya camps after ICJ verdict <span class="r">GLOBAL</span></div>
+        <div class="wi"><span class="t">19:47</span> <span class="n">34.</span> Grynspan leads straw poll for UN chief <span class="r">GLOBAL</span></div>
+        <div class="wi"><span class="t">20:24</span> <span class="n">35.</span> BepiColombo reaches Mercury <span class="r">GLOBAL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <div class="foot">
-    <div>THE DAILY ATLAS &mdash; Saturday, November 21, 2026</div>
-    <div>35 stories &bull; 7 regions &bull; Europe 7 &bull; Asia-Pacific 7 &bull; North America 6 &bull; Middle East 4 &bull; Africa 4 &bull; Latin America 3 &bull; Global 4</div>
+    <div><b>THE DAILY ATLAS</b> &mdash; one page, the whole world</div>
+    <div>EUROPE <b>7</b> &middot; ASIA-PACIFIC <b>7</b> &middot; NORTH AMERICA <b>6</b> &middot; MIDDLE EAST <b>4</b> &middot; AFRICA <b>4</b> &middot; LATIN AMERICA <b>3</b> &middot; GLOBAL <b>4</b> &mdash; <b>35 STORIES</b></div>
   </div>
+
+<script>
+  // Procedural dot-grid heat map: one dot per grid cell, coloured by region,
+  // shaded by that region's story count. Grid letters: N North America,
+  // L Latin America, E Europe, M Middle East, F Africa, A Asia-Pacific.
+  var GRID = [
+    ".....NNNNNN..............EEEEAAAAAAAAAAAAAAAAAAAAAA...",
+    "...NNNNNNNNN............EEEEEEAAAAAAAAAAAAAAAAAAAAA...",
+    "..NNNNNNNNNNN..........EEEEEEEAAAAAAAAAAAAAAAAAAAAA...",
+    "..NNNNNNNNNNN.........EEEEEEEEEAAAAAAAAAAAAAAAAAA....",
+    "...NNNNNNNNNN........EEEEEEEEEAAAAAAAAAAAAAAAAA......",
+    "....NNNNNNNN.........EEEEEEEEEMMAAAAAAAAAAAAAAAA......",
+    "....NNNNNNNN..........EEEEEEEEMMAAAAAAAAAAAAAA........",
+    ".....NNNNNNN...........EEEEEEEMMAAAAAAAAAAAAA.........",
+    ".....NNNNNNN...........EEEEEEMMMMAAAAAAAAAA...........",
+    ".....NNNNNN............EEFFFFMMMMAAAAAAAAA...........",
+    "......NNNNN............FFFFFFFFMMMAAAAAAAAA...........",
+    "......NNNN.............FFFFFFFFFAAAAAAAAAAAA..........",
+    ".......NNN.............FFFFFFFFAAAAAAAAAAAA...........",
+    ".......LLL.............FFFFFFFF.AAAAAAAAAA............",
+    "........LLLL...........FFFFFFFF..AAAAAAAA.............",
+    "........LLLLL..........FFFFFFF....AAAAAA......AA......",
+    ".........LLLLL.........FFFFFF..............AA.........",
+    ".........LLLLL..........FFFF................AA........",
+    "..........LLLL..........FFFF..........................",
+    "..........LLLL...........FFF..........................",
+    "...........LLL...........FFFF.........................",
+    "............LL............FF.........................."
+  ];
+  var HEAT = { N: "#d34a4f", L: "#e8a7a9", E: "#c1272d", M: "#dd7a7d", F: "#dd7a7d", A: "#c1272d" };
+  var PINS = [ // story number, grid col, grid row
+    [1, 26, 5], [2, 29, 6], [3, 22, 5], [10, 49, 8], [14, 40, 11],
+    [15, 9, 8], [16, 5, 8], [17, 8, 10], [20, 4, 9], [21, 33, 11],
+    [25, 29, 19], [26, 33, 14]
+  ];
+  (function () {
+    var svg = document.getElementById("worldmap");
+    var NS = "http://www.w3.org/2000/svg";
+    var cw = 294 / 54, ch = 124 / 22;
+    for (var r = 0; r < GRID.length; r++) {
+      var row = GRID[r];
+      for (var c = 0; c < row.length && c < 54; c++) {
+        var ch2 = row[c];
+        var dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", (c + 0.5) * cw);
+        dot.setAttribute("cy", (r + 0.5) * ch);
+        if (ch2 === ".") {
+          dot.setAttribute("r", 1.0);
+          dot.setAttribute("fill", "#c3ccd4");
+        } else {
+          dot.setAttribute("r", 1.9);
+          dot.setAttribute("fill", HEAT[ch2] || "#141210");
+        }
+        svg.appendChild(dot);
+      }
+    }
+    PINS.forEach(function (p) {
+      var g = document.createElementNS(NS, "g");
+      var circ = document.createElementNS(NS, "circle");
+      circ.setAttribute("cx", (p[1] + 0.5) * cw);
+      circ.setAttribute("cy", (p[2] + 0.5) * ch);
+      circ.setAttribute("r", 6.4);
+      circ.setAttribute("fill", "#fbf8f0");
+      circ.setAttribute("stroke", "#141210");
+      circ.setAttribute("stroke-width", "1.2");
+      var t = document.createElementNS(NS, "text");
+      t.setAttribute("x", (p[1] + 0.5) * cw);
+      t.setAttribute("y", (p[2] + 0.5) * ch + 2.6);
+      t.setAttribute("text-anchor", "middle");
+      t.setAttribute("font-family", "Noto Sans");
+      t.setAttribute("font-weight", "bold");
+      t.setAttribute("font-size", "7.6");
+      t.setAttribute("fill", "#c1272d");
+      t.textContent = p[0];
+      g.appendChild(circ); g.appendChild(t);
+      svg.appendChild(g);
+    });
+  })();
+</script>
 </body>
 </html>

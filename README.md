@@ -12,11 +12,15 @@ S&P 500 into correction.
 ## Layout
 
 - `poster.html` — the page itself (1024x1024), drawn as a modular newspaper
-  sheet: masthead, lead story with a by-the-numbers box, a markets ticker,
-  and seven labelled region sections.
+  sheet in the ATLAS v2 layout: giant serif date masthead, a six-number
+  stats strip, one oversized hero card (No. 1, Poland), eleven further
+  illustrated story cards with key numbers and location banners, a dot-grid
+  heat map with story counts and numbered pins per region, "THE WIRE"
+  timed list for the remaining 23 stories, and a red DATE CHECK box naming
+  the stories thrown out and why.
 - `render_poster.py` — screenshots `poster.html` with headless Chromium
   into `entry.png` and checks it against the competition caps
-  (1024x1024, at most 1 MiB).
+  (1024x1024, at most 1 MiB); also writes 512px and 300px previews.
 - `stories.md` — the story list: headline, region, source and summary for
   every item on the page.
 - `main.ts` — the entrypoint. It verifies the committed `entry.png`
